@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')) {
             // Call the php artisan migrate:refresh
             $this->command->call('migrate:refresh');
-            $this->command->warn("Data cleared, starting from blank database.");
+            $this->command->warn('Data cleared, starting from blank database.');
         }
 
         // Seed the default permissions
@@ -43,16 +43,16 @@ class DatabaseSeeder extends Seeder
             $roles_array = explode(',', $input_roles);
 
             // add roles
-            foreach($roles_array as $role) {
+            foreach ($roles_array as $role) {
                 $role = Role::firstOrCreate(['name' => trim($role)]);
 
-                if( $role->name == 'Super Admin' ) {
+                if ($role->name == 'Super Admin') {
                     // assign all permissions
                     $role->syncPermissions(Permission::all());
                     $this->command->info('Super Admin granted all the permissions');
-                }elseif( $role->name == 'Admin' ) {
+                } elseif ($role->name == 'Admin') {
                     // assign all permissions
-                    $role->syncPermissions(Permission::where('name','LIKE','view_%')->where('name','LIKE','add_%')->where('name','LIKE','edit_%'));
+                    $role->syncPermissions(Permission::where('name', 'LIKE', 'view_%')->where('name', 'LIKE', 'add_%')->where('name', 'LIKE', 'edit_%'));
                     $this->command->info('Admin granted some of the permissions');
                 } else {
                     // for others by default only read access
@@ -63,8 +63,7 @@ class DatabaseSeeder extends Seeder
                 $this->createUser($role);
             }
 
-            $this->command->info('Roles ' . $input_roles . ' added successfully');
-
+            $this->command->info('Roles '.$input_roles.' added successfully');
         } else {
             Role::firstOrCreate(['name' => 'User']);
             $this->command->info('Added only default user role.');
@@ -77,7 +76,7 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
-     * Create a user with given role
+     * Create a user with given role.
      *
      * @param $role
      */
@@ -86,11 +85,10 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create();
         $user->assignRole($role->name);
 
-        if( $role->name == 'Super Admin' ) {
+        if ($role->name == 'Super Admin') {
             $this->command->info('Here is your admin details to login:');
             $this->command->warn($user->email);
             $this->command->warn('Password is "password"');
         }
-
     }
 }
