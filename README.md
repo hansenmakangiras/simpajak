@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/hansenmakangiras/simpajak.svg?branch=master)](https://travis-ci.com/hansenmakangiras/simpajak)
-[![StyleCI](https://github.styleci.io/repos/395412757/shield?branch=master)](https://github.styleci.io/repos/395412757)
+[![StyleCI](https://github.styleci.io/repos/395743027/shield?branch=master)](https://github.styleci.io/repos/395743027)
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
