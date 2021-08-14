@@ -1,9 +1,12 @@
 @extends('layouts.app')
-
+@push('css_custom')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
+    <link href="{{asset('assets/css/users/account-setting.css')}}" rel="stylesheet" type="text/css"/>
+@endpush
 @section('content')
 
-            <div class="layout-px-spacing">                
-                    
+            <div class="layout-px-spacing">
+
                 <div class="account-settings-container layout-top-spacing">
 
                     <div class="account-content">
@@ -237,7 +240,7 @@ My job is to build your website so that it is functional and user-friendly but a
                                                                 <label for="email">Email</label>
                                                                 <input type="text" class="form-control mb-4" id="email" placeholder="Write your email here" value="Jimmy@gmail.com">
                                                             </div>
-                                                        </div>                                    
+                                                        </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="website1">Website</label>
@@ -275,7 +278,7 @@ My job is to build your website so that it is functional and user-friendly but a
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Twitter Username" aria-label="Username" aria-describedby="tweet" value="@jTurner">
                                                             </div>
-                                                        </div>                                                        
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -514,7 +517,7 @@ My job is to build your website so that it is functional and user-friendly but a
                                                             </div>
 
                                                         </div>
-                                                        
+
                                                     </div>
 
                                                 </div>
@@ -708,7 +711,7 @@ My job is to build your website so that it is functional and user-friendly but a
                     </div>
 
                     <div class="account-settings-footer">
-                        
+
                         <div class="as-footer-container">
 
                             <button id="multiple-reset" class="btn btn-primary">Reset All</button>
@@ -724,3 +727,8 @@ My job is to build your website so that it is functional and user-friendly but a
 
             </div>
 @endsection
+@push('scripts')
+    <script src="{{asset('plugins/dropify/dropify.min.js')}}"></script>
+    <script src="{{asset('plugins/blockui/jquery.blockUI.min.js')}}"></script>
+    <script src="{{asset('assets/js/users/account-settings.js')}}"></script>
+@endpush

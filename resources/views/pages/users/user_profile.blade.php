@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('css_custom')
+    <link href="{{asset('assets/css/users/user-profile.css')}}" rel="stylesheet" type="text/css"/>
+@endpush
 
 @section('content')
 
@@ -13,7 +16,8 @@
                             <div class="widget-content widget-content-area">
                                 <div class="d-flex justify-content-between">
                                     <h3 class="">Profile</h3>
-                                    <a href="/users/account_settings" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
+                                    <a href="{{ url('/users/account_settings') }}" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
                                 </div>
                                 <div class="text-center user-info">
                                     <img src="{{asset('storage/img/90x90.jpg')}}" alt="avatar">
@@ -58,7 +62,7 @@
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -105,13 +109,13 @@
                         </div>
 
                         <div class="work-experience layout-spacing ">
-                            
+
                             <div class="widget-content widget-content-area">
 
                                 <h3 class="">Work Experience</h3>
-                                
+
                                 <div class="timeline-alter">
-                                
+
                                     <div class="item-timeline">
                                         <div class="t-meta-date">
                                             <p class="">04 Mar 2009</p>
@@ -186,9 +190,9 @@
                                 <div class="bio-skill-box">
 
                                     <div class="row">
-                                        
+
                                         <div class="col-12 col-xl-6 col-lg-12 mb-xl-5 mb-5 ">
-                                            
+
                                             <div class="d-flex b-skills">
                                                 <div>
                                                 </div>
@@ -201,7 +205,7 @@
                                         </div>
 
                                         <div class="col-12 col-xl-6 col-lg-12 mb-xl-5 mb-5 ">
-                                            
+
                                             <div class="d-flex b-skills">
                                                 <div>
                                                 </div>
@@ -214,7 +218,7 @@
                                         </div>
 
                                         <div class="col-12 col-xl-6 col-lg-12 mb-xl-0 mb-5 ">
-                                            
+
                                             <div class="d-flex b-skills">
                                                 <div>
                                                 </div>
@@ -227,7 +231,7 @@
                                         </div>
 
                                         <div class="col-12 col-xl-6 col-lg-12 mb-xl-0 mb-0 ">
-                                            
+
                                             <div class="d-flex b-skills">
                                                 <div>
                                                 </div>
@@ -243,12 +247,12 @@
 
                                 </div>
 
-                            </div>                                
+                            </div>
                         </div>
 
                     </div>
 
                 </div>
             </div>
-            
+
 @endsection

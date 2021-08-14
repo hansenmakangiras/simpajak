@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Utilities;
 
-class Helper
+class Helpers
 {
-    public static function getURL()
+    public static function getURL(): string
     {
         // return 'This works';
 

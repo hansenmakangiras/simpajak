@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
-@section('content')
+@push('css_custom')
+    <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/elements/alert.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+@endpush
 
+@section('content')
     <div class="layout-px-spacing">
         @include('flash::message')
         <div class="row layout-top-spacing">
@@ -23,4 +29,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+@endpush
 

@@ -26,8 +26,12 @@
         </div>
     </div>
 </div>
-{{--@dd($total_visit)--}}
+
 @push('scripts')
+    @if(config('app.env') === 'local' || config('app.env') === 'development')
+        <script src="{{asset('plugins/apex/apexcharts.min.js')}}"></script>
+    @endif
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
         {{--let totalVisit = @json($total_visit);--}}
         // console.log(totalVisit);
@@ -245,7 +249,7 @@
                 d_1C_2.updateSeries([{
                     data : chartData.seriesData['paidVisit']
                 }]);
-            });
+            })
         });
     </script>
 @endpush

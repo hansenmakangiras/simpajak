@@ -14,17 +14,17 @@
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 @switch($page_name)
     @case('dashboard')
-     Dashboard
     <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/css/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/elements/alert.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @break
 
-    @case('sales')
-    Sales
-    <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css"/>
+    @case('users')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/datatables.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/forms/theme-checkbox-radio.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/dt-global_style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/custom_dt_custom.css')}}">
     @break
 
     @case('calendar')
@@ -67,7 +67,7 @@
     {{-- App Mailbox --}}
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/editors/quill/quill.snow.css')}}">
     <link href="{{asset('assets/css/apps/mailbox.css')}}" rel="stylesheet" type="text/css"/>
-    <script src="plugins/sweetalerts/promise-polyfill.js"></script>
+    <script src="{{ asset('plugins/sweetalerts/promise-polyfill.js') }}"></script>
     <link href="{{asset('plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('plugins/notification/snackbar/snackbar.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -1152,6 +1152,7 @@
 
     @default
     <script>console.log('No custom Styles available.')</script>
+    @stack('css_custom')
     <livewire:styles />
 @endswitch
 <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
