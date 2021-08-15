@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Traits;
 
 use Arr;
@@ -6,25 +7,26 @@ use Arr;
 trait Authorizable
 {
     private $abilities = [
-        'index' => 'view',
-        'edit' => 'edit',
-        'show' => 'view',
-        'update' => 'edit',
-        'create' => 'add',
-        'store' => 'add',
-        'destroy' => 'delete'
+        'index'   => 'view',
+        'edit'    => 'edit',
+        'show'    => 'view',
+        'update'  => 'edit',
+        'create'  => 'add',
+        'store'   => 'add',
+        'destroy' => 'delete',
     ];
 
     /**
-     * Override of callAction to perform the authorization before
+     * Override of callAction to perform the authorization before.
      *
      * @param $method
      * @param $parameters
+     *
      * @return mixed
      */
     public function callAction($method, $parameters)
     {
-        if( $ability = $this->getAbility($method) ) {
+        if ($ability = $this->getAbility($method)) {
             $this->authorize($ability);
         }
 
@@ -36,7 +38,7 @@ trait Authorizable
         $routeName = explode('.', \Request::route()->getName());
         $action = Arr::get($this->getAbilities(), $method);
 
-        return $action ? $action . '_' . $routeName[0] : null;
+        return $action ? $action.'_'.$routeName[0] : null;
     }
 
     private function getAbilities()

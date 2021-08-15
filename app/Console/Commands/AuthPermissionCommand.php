@@ -43,25 +43,24 @@ class AuthPermissionCommand extends Command
         $permissions = $this->generatePermissions();
 
         // check if its remove
-        if( $is_remove = $this->option('remove') ) {
+        if ($is_remove = $this->option('remove')) {
             // remove permission
-            if( Permission::where('name', 'LIKE', '%'. $this->getNameArgument())->delete() ) {
-                $this->warn('Permissions ' . implode(', ', $permissions) . ' deleted.');
-            }  else {
-                $this->warn('No permissions for ' . $this->getNameArgument() .' found!');
+            if (Permission::where('name', 'LIKE', '%'.$this->getNameArgument())->delete()) {
+                $this->warn('Permissions '.implode(', ', $permissions).' deleted.');
+            } else {
+                $this->warn('No permissions for '.$this->getNameArgument().' found!');
             }
-
         } else {
             // create permissions
             foreach ($permissions as $permission) {
-                Permission::firstOrCreate(['name' => $permission ]);
+                Permission::firstOrCreate(['name' => $permission]);
             }
 
-            $this->info('Permissions ' . implode(', ', $permissions) . ' created.');
+            $this->info('Permissions '.implode(', ', $permissions).' created.');
         }
 
         // sync role for admin
-        if( $role = Role::where('name', 'Super Admin')->first() ) {
+        if ($role = Role::where('name', 'Super Admin')->first()) {
             $role->syncPermissions(Permission::all());
             $this->info('Super Admin permissions');
         }
@@ -72,8 +71,8 @@ class AuthPermissionCommand extends Command
         $abilities = ['view', 'add', 'edit', 'delete'];
         $name = $this->getNameArgument();
 
-        return array_map(function($val) use ($name) {
-            return $val . '_'. $name;
+        return array_map(function ($val) use ($name) {
+            return $val.'_'.$name;
         }, $abilities);
     }
 

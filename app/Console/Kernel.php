@@ -14,13 +14,13 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        AuthPermissionCommand::class
+        AuthPermissionCommand::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  Schedule  $schedule
+     * @param Schedule $schedule
      *
      * @return void
      */

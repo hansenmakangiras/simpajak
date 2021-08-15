@@ -25,7 +25,7 @@ class UserController extends Controller
         ];
         $users = User::all();
 
-        return view('pages.users.list_pengguna',compact('users'))->with($data);
+        return view('pages.users.list_pengguna', compact('users'))->with($data);
     }
 
     public function create()
@@ -41,7 +41,7 @@ class UserController extends Controller
         $users = User::latest()->paginate();
         $roles = Role::pluck('name', 'id');
 
-        return view('pages.users.create',compact('users','roles'))->with($data);
+        return view('pages.users.create', compact('users', 'roles'))->with($data);
     }
 
     /**
@@ -50,17 +50,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'bail|required|min:2',
-            'email' => 'required|email|unique:users',
+            'name'     => 'bail|required|min:2',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'roles' => 'required|min:1'
+            'roles'    => 'required|min:1',
         ]);
 
         // hash password
         $request->merge(['password' => bcrypt($request->get('password'))]);
 
         // Create the user
-        if ( $user = User::create($request->except('roles', 'permissions')) ) {
+        if ($user = User::create($request->except('roles', 'permissions'))) {
             $this->syncPermissions($request, $user);
             flash('User has been created.');
         } else {
@@ -92,15 +92,15 @@ class UserController extends Controller
         $roles = Role::pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
 
-        return view('pages.users.edit',compact('users','roles','permissions'))->with($data);
+        return view('pages.users.edit', compact('users', 'roles', 'permissions'))->with($data);
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'bail|required|min:2',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'roles' => 'required|min:1'
+            'name'  => 'bail|required|min:2',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'roles' => 'required|min:1',
         ]);
 
         // Get the user
@@ -110,7 +110,7 @@ class UserController extends Controller
         $user->fill($request->except('roles', 'permissions', 'password'));
 
         // check for password change
-        if($request->get('password')) {
+        if ($request->get('password')) {
             $user->password = bcrypt($request->get('password'));
         }
 
@@ -173,17 +173,18 @@ class UserController extends Controller
 
         $users = User::find($id);
 
-        return view('pages.users.user_account_setting',compact('users'))->with($data);
+        return view('pages.users.user_account_setting', compact('users'))->with($data);
     }
 
     public function destroy($id)
     {
-        if ( Auth::user()->id === $id ) {
+        if (Auth::user()->id === $id) {
             flash()->warning('Deletion of currently logged in user is not allowed :(')->important();
+
             return redirect()->back();
         }
 
-        if( User::findOrFail($id)->delete() ) {
+        if (User::findOrFail($id)->delete()) {
             flash()->success('User has been deleted');
         } else {
             flash()->success('User not deleted');
@@ -210,7 +211,7 @@ class UserController extends Controller
         $roles = Role::find($roles);
 
         // check for current role changes
-        if( ! $user->hasAllRoles( $roles ) ) {
+        if (!$user->hasAllRoles($roles)) {
             // reset all direct permissions for user
             $user->permissions()->sync([]);
         } else {
