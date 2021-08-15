@@ -49,13 +49,14 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'login_at' => 'datetime',
+        'login_at'          => 'datetime',
     ];
 
     /**
      * Scope a query to only include active users.
      *
-     * @param  Builder  $query
+     * @param Builder $query
+     *
      * @return Builder
      */
     public function scopeActive(Builder $query): Builder
@@ -66,30 +67,33 @@ class User extends Authenticatable
     /**
      * Scope a query to only include active users.
      *
-     * @param  Builder  $query
+     * @param Builder $query
+     *
      * @return Builder
      */
     public function scopeNotActive(Builder $query): Builder
     {
-        return $query->where('status', '<>',1);
+        return $query->where('status', '<>', 1);
     }
 
     /**
      * Scope a query to only include active users.
      *
-     * @param  Builder  $query
+     * @param Builder $query
+     *
      * @return Builder
      */
     public function scopeNotAdmin(Builder $query): Builder
     {
-        return $query->where('is_admin', '<>',1);
+        return $query->where('is_admin', '<>', 1);
     }
 
     /**
      * Scope a query to choose users by role.
      *
-     * @param  Builder  $query
-     * @param  int  $type
+     * @param Builder $query
+     * @param int     $type
+     *
      * @return Builder
      */
     public function scopeisAdmin(Builder $query, int $type): Builder
