@@ -17,15 +17,15 @@
                             <a href="#flActionButtons" class="nav-link">Actions Buttons</a>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div id="flStackForm" class="col-lg-12 layout-spacing layout-top-spacing">
                             <div class="statbox widget box box-shadow">
-                                <div class="widget-header">                                
+                                <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Stack Forms</h4>
-                                        </div>                                                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -47,7 +47,7 @@
                                     </form>
 
                                     <div class="code-section-container show-code">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
 
                                         <div class="code-section text-left">
@@ -75,14 +75,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div id="flHorizontalForm" class="col-lg-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
-                                <div class="widget-header">                                
+                                <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Horizontal form</h4>
-                                        </div>                                                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -145,7 +145,7 @@
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
 
                                         <div class="code-section text-left">
@@ -219,11 +219,11 @@
                     <div class="row">
                         <div id="flRegistrationForm" class="col-lg-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
-                                <div class="widget-header">                                
+                                <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Registration Forms</h4>
-                                        </div>                                                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -248,7 +248,7 @@
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
 
                                         <div class="code-section text-left">
@@ -278,10 +278,10 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div id="flLoginForm" class="col-lg-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
-                                <div class="widget-header">                                
+                                <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Login Form</h4>
@@ -304,7 +304,7 @@
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
 
                                         <div class="code-section text-left">
@@ -337,7 +337,7 @@
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Forms Grid</h4>
-                                        </div>                                                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -389,7 +389,7 @@
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
 
                                         <div class="code-section text-left">
@@ -455,7 +455,7 @@
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Inline forms</h4>
-                                        </div>                                                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -479,7 +479,7 @@
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
                                         <div class="code-section text-left">
                                             <pre>
@@ -493,6 +493,7 @@
         &lt;/div&gt;
         &lt;input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username"&gt;
     &lt;/div&gt;
+
     &lt;div class="form-check mb-2 mr-sm-2"&gt;
         &lt;div class="custom-control custom-checkbox checkbox-info"&gt;
             &lt;input type="checkbox" class="custom-control-input" id="inlineFormCheck"&gt;
@@ -510,11 +511,11 @@
 
                         <div id="flAutoSizing" class="col-lg-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
-                                <div class="widget-header">                                
+                                <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Auto-sizing</h4>
-                                        </div>                                                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
@@ -548,7 +549,7 @@
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
                                         <div class="code-section text-left">
                                             <pre>
@@ -587,11 +588,11 @@
                             </div>
                         </div>
                     </div>
-                  
+
                     <div class="row layout-spacing">
                         <div id="flActionButtons" class="col-lg-12">
                             <div class="statbox widget box box-shadow">
-                                <div class="widget-header">                                
+                                <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                             <h4>Actions Buttons</h4>
@@ -606,36 +607,36 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <label class="control-label">Email:</label>
-                                            <div class="input-group"> 
+                                            <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">@</div>
                                                 </div>
-                                                <input type="text" name="email" class="form-control" > 
-                                            </div> 
+                                                <input type="text" name="email" class="form-control" >
+                                            </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <label class="control-label">Website:</label>
-                                            <input type="text" name="website" value="https://" class="form-control" > 
+                                            <input type="text" name="website" value="https://" class="form-control" >
                                         </div>
                                         <div class="form-group mb-4">
                                             <label class="control-label">Password:</label>
                                             <div class="input-group mb-4">
-                                                <input type="password" name="pass" class="form-control" > 
-                                                <span class="input-group-addon"><i class="icon-user"></i></span> 
+                                                <input type="password" name="pass" class="form-control" >
+                                                <span class="input-group-addon"><i class="icon-user"></i></span>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <label class="control-label">Confirm Password:</label>
                                             <div class="input-group">
                                                 <input type="password" name="cpass" class="form-control">
-                                                <span class="input-group-addon"><i class="icon-user"></i></span> 
+                                                <span class="input-group-addon"><i class="icon-user"></i></span>
                                             </div>
                                         </div>
-                                            <input type="submit" value="Submit" class="btn btn-primary ml-3 mt-3"> 
+                                            <input type="submit" value="Submit" class="btn btn-primary ml-3 mt-3">
                                     </form>
 
                                     <div class="code-section-container">
-                                                
+
                                         <button class="btn toggle-code-snippet"><span>Code</span></button>
                                         <div class="code-section text-left">
                                             <pre>
@@ -646,32 +647,32 @@
     &lt;/div&gt;
     &lt;div class="form-group mb-4"&gt;
         &lt;label class="control-label"&gt;Email:&lt;/label&gt;
-        &lt;div class="input-group"&gt; 
+        &lt;div class="input-group"&gt;
             &lt;div class="input-group-prepend"&gt;
                 &lt;div class="input-group-text"&gt;@&lt;/div&gt;
             &lt;/div&gt;
-            &lt;input type="text" name="email" class="form-control" &gt; 
-        &lt;/div&gt; 
+            &lt;input type="text" name="email" class="form-control" &gt;
+        &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="form-group mb-4"&gt;
         &lt;label class="control-label"&gt;Website:&lt;/label&gt;
-        &lt;input type="text" name="website" value="https://" class="form-control" &gt; 
+        &lt;input type="text" name="website" value="https://" class="form-control" &gt;
     &lt;/div&gt;
     &lt;div class="form-group mb-4"&gt;
         &lt;label class="control-label"&gt;Password:&lt;/label&gt;
         &lt;div class="input-group mb-4"&gt;
-            &lt;input type="password" name="pass" class="form-control" &gt; 
-            &lt;span class="input-group-addon"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/span&gt; 
+            &lt;input type="password" name="pass" class="form-control" &gt;
+            &lt;span class="input-group-addon"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/span&gt;
         &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="form-group mb-4"&gt;
         &lt;label class="control-label"&gt;Confirm Password:&lt;/label&gt;
         &lt;div class="input-group"&gt;
             &lt;input type="password" name="cpass" class="form-control"&gt;
-            &lt;span class="input-group-addon"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/span&gt; 
+            &lt;span class="input-group-addon"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/span&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-        &lt;input type="submit" value="Submit" class="btn btn-primary ml-3 mt-3"&gt; 
+        &lt;input type="submit" value="Submit" class="btn btn-primary ml-3 mt-3"&gt;
 &lt;/form&gt;
 </pre>
                                         </div>
@@ -680,7 +681,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 @endsection

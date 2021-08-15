@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +53,16 @@ Route::group(['middleware' => 'auth', 'web'], function () {
         return view('dashboard2')->with($data);
     });
 
-    Route::get('/users', [UserController::class,'index'])->name('users.list');
+    Route::prefix('users')->group(function () {
+        Route::get('/account/{id}', [UserController::class,'account'])->name('users.account');
+        Route::get('/profil/{id}', [UserController::class,'profil'])->name('users.profil');
+        Route::post('/profil/{id}', [UserController::class,'profil'])->name('users.profil');
+    });
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
+
+
 
     // APPS
     Route::prefix('apps')->group(function () {
@@ -1356,35 +1367,6 @@ Route::group(['middleware' => 'auth', 'web'], function () {
         });
     });
 
-    // Users
-    Route::prefix('users')->group(function () {
-        Route::get('/account_settings', function () {
-            // $category_name = '';
-            $data = [
-                'category_name'    => 'users',
-                'page_name'        => 'account_settings',
-                'has_scrollspy'    => 0,
-                'scrollspy_offset' => '',
-                'alt_menu'         => 0,
-
-            ];
-            // $pageName = 'account_settings';
-            return view('pages.users.user_account_setting')->with($data);
-        });
-        Route::get('/profile', function () {
-            // $category_name = '';
-            $data = [
-                'category_name'    => 'users',
-                'page_name'        => 'profile',
-                'has_scrollspy'    => 0,
-                'scrollspy_offset' => '',
-                'alt_menu'         => 0,
-
-            ];
-            // $pageName = 'profile';
-            return view('pages.users.user_profile')->with($data);
-        });
-    });
 
     // Widgets
     Route::get('/widgets', function () {

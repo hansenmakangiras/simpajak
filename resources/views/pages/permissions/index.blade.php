@@ -8,12 +8,40 @@
 @section('content')
 
     <div class="layout-px-spacing">
+{{--        <div class="row layout-top-spacing">--}}
+{{--            <div class="col-lg-6">--}}
+{{--                <a href="{{ url('users/create') }}" class="btn btn-primary mb-2">Create Roles</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="row layout-top-spacing layout-spacing">
             <div class="col-lg-6">
-                <a href="{{ url('users/create') }}" class="btn btn-primary mb-2">Create Users</a>
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-header">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                <h4>Add Permission</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-content widget-content-area">
+                        <form>
+                            <div class="form-group row mb-4">
+                                <label for="rolename" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Permission</label>
+                                <div class="col-xl-10 col-lg-9 col-sm-10">
+                                    <input type="text" class="form-control" id="rolename" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 text-right">
+                                    <button type="submit" class="btn btn-primary mt-3">Add</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="statbox widget box box-shadow">
 {{--                    <div class="widget-header">--}}
 {{--                        <div class="row">--}}
@@ -28,34 +56,16 @@
                                 <thead class="">
                                 <tr>
                                     <th class="checkbox-column dt-no-sorting"> Id</th>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Role</th>
-                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Permission</th>
                                     <th class="text-center dt-no-sorting">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($users as $user)
+                                @foreach($permissions as $permission)
                                     <tr>
-                                        <td class="checkbox-column"> {{ $user->id }}</td>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        @foreach($user->roles as $role)
-                                            @switch($role->name)
-                                                @case('Super Admin')
-                                                <td class="text-center"><span class="shadow-none badge badge-primary">{{ $role->name }}</span></td>
-                                                    @break
-                                                @case('Admin')
-                                                <td class="text-center"><span class="shadow-none badge badge-warning">{{ $role->name }}</span></td>
-                                                    @break
-                                                @default
-                                                <td class="text-center"><span class="shadow-none badge badge-danger">{{ $role->name }}</span></td>
-                                            @endswitch
-                                        @endforeach
-                                        <td class="text-center"><span class="shadow-none badge badge-{{ $user->status === 1 ? 'primary' : 'danger'}}">{{ $user->status === 1 ?
-                                        'Aktif' : 'Non Aktif'}}</span></td>
+                                        <td class="checkbox-column"> {{ $permission->id }}</td>
+                                        <td class="text-center">{{ $permission->name }}</td>
                                         <td class="text-center">
                                             <div class="dropdown custom-dropdown">
                                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true"
@@ -67,13 +77,10 @@
                                                         <circle cx="5" cy="12" r="1"></circle>
                                                     </svg>
                                                 </a>
-
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                    <a class="dropdown-item" href="{{ route('users.account', $user->id) }}">Account Setting</a>
-                                                    <a class="dropdown-item" href="{{ route('users.profil', $user->id) }}">Profil</a>
-                                                    <a class="dropdown-item" href="{{ route('users.show', $user->id) }}">View</a>
-                                                    <a class="dropdown-item" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                                                    <a class="dropdown-item" href="{{ route('users.destroy',$user->id) }}">Delete</a>
+                                                    <a class="dropdown-item" href="{{ route('roles.show', $permission->id) }}">View</a>
+                                                    <a class="dropdown-item" href="{{ route('roles.edit',$permission->id) }}">Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('roles.destroy',$permission->id) }}">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
