@@ -20,15 +20,15 @@
                     {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update',  $role->id ], 'class' => '']) !!}
 
                     @if($role->name === 'Super Admin')
-                        @include('pages.shared._permissions', [
+                        @include('shared._permissions', [
                                       'title' => $role->name .' Permissions',
                                       'options' => ['disabled'] ])
                     @elseif($role->name === 'Admin')
-                        @include('pages.shared._permissions', [
+                        @include('shared._permissions', [
                                       'title' => $role->name .' Permissions',
                                       'options' => ['disabled'] ])
                     @else
-                        @include('pages.shared._permissions', [
+                        @include('shared._permissions', [
                                       'title' => $role->name .' Permissions',
                                       'model' => $role ])
                         @can('edit_roles')

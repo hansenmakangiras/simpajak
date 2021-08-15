@@ -7,8 +7,9 @@ use App\Models\Role;
 use App\Models\User;
 use App\Traits\Authorizable;
 use Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use Request;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
         ];
         $users = User::all();
 
-        return view('pages.users.list_pengguna',compact('users'))->with($data);
+        return view('users.list_pengguna',compact('users'))->with($data);
     }
 
     public function create()
@@ -41,13 +42,13 @@ class UserController extends Controller
         $users = User::latest()->paginate();
         $roles = Role::pluck('name', 'id');
 
-        return view('pages.users.create',compact('users','roles'))->with($data);
+        return view('users.create',compact('users','roles'))->with($data);
     }
 
     /**
      * @throws ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'name' => 'bail|required|min:2',
@@ -56,14 +57,23 @@ class UserController extends Controller
             'roles' => 'required|min:1'
         ]);
 
+//        $request = $request->except(['roles', 'permissions']);
         // hash password
         $request->merge(['password' => bcrypt($request->get('password'))]);
 
         // Create the user
-        if ( $user = User::create($request->except('roles', 'permissions')) ) {
+        $user = User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'status' => $request->get('status') === '1' ? 1 : 0,
+            'is_admin' => $request->get('roles') === '1' ? 1 : 0,
+        ]);
+
+        if ( $user) {
             $this->syncPermissions($request, $user);
             flash('User has been created.');
-        } else {
+        }else{
             flash()->error('Unable to create user.');
         }
 
@@ -75,7 +85,7 @@ class UserController extends Controller
             'alt_menu'         => 0,
         ];
 
-        return redirect()->route('users.index')->with($data);
+        return redirect()->route('users.create')->with($data);
     }
 
     public function edit($id)
@@ -88,11 +98,11 @@ class UserController extends Controller
             'alt_menu'         => 0,
         ];
 
-        $users = User::find($id);
+        $user = User::find($id);
         $roles = Role::pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
 
-        return view('pages.users.edit',compact('users','roles','permissions'))->with($data);
+        return view('users.edit',compact('user','roles','permissions'))->with($data);
     }
 
     public function update(Request $request, $id)
@@ -107,7 +117,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         // Update user
-        $user->fill($request->except('roles', 'permissions', 'password'));
+        $user->fill($request->except(['roles', 'permissions', 'password']));
 
         // check for password change
         if($request->get('password')) {
@@ -143,7 +153,7 @@ class UserController extends Controller
 
         $users = User::all();
 
-        return view('pages.users.show')->with($data);
+        return view('users.show')->with($data);
     }
 
     public function profil($id)
@@ -158,7 +168,7 @@ class UserController extends Controller
 
         $users = User::find($id);
 
-        return view('pages.users.user_profile')->with($data);
+        return view('users.user_profile')->with($data);
     }
 
     public function account($id)
@@ -173,7 +183,7 @@ class UserController extends Controller
 
         $users = User::find($id);
 
-        return view('pages.users.user_account_setting',compact('users'))->with($data);
+        return view('users.user_account_setting',compact('users'))->with($data);
     }
 
     public function destroy($id)

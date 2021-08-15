@@ -27,13 +27,13 @@ class PermissionController extends Controller
         ];
 
         $permissions = Permission::all();
-        return view('pages.permissions.index',compact('permissions'))->with($data);
+        return view('permissions.index',compact('permissions'))->with($data);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return void
      */
     public function create()
     {
@@ -43,8 +43,8 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param  Request  $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -57,7 +57,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
         //
     }
@@ -68,7 +68,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(int $id): Response
     {
         //
     }
@@ -76,11 +76,11 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): Response
     {
         //
     }
@@ -91,7 +91,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(int $id): Response
     {
         //
     }

@@ -9,6 +9,7 @@
 
     <div class="layout-px-spacing">
         <div class="row layout-top-spacing layout-spacing">
+            @include('flash::message');
             <div class="col-lg-6">
                 <a href="{{ url('users/create') }}" class="btn btn-primary mb-2">Create Users</a>
             </div>

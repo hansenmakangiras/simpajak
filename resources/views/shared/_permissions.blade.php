@@ -19,10 +19,11 @@
                             $per_found = $user->hasDirectPermission($perm->name);
                         }
                     @endphp
-                    <div class="form-check mb-2 mr-sm-2">
-                        <div class="custom-control custom-checkbox checkbox-info">
-                            <input name="permissions[]" value="{{ $perm->name }}" type="checkbox" class="custom-control-input"
-                                   id="inlineFormCheck" {{ $per_found ? 'checked' : '' }}>
+                    <div class="col-md-3 mb-2 mr-sm-2">
+                        <div class="custom-control custom-checkbox checkbox-info checkbox-inline">
+                            {!! Form::checkbox("permissions[]", $perm->name, $per_found, $options ?? ['class' => 'custom-control-input']) !!}
+{{--                            <input name="permissions[]" value="{{ $perm->name }}" type="checkbox" class="custom-control-input"--}}
+{{--                                   id="inlineFormCheck" {{ $per_found ? 'checked' : '' }}>--}}
                             <label class="custom-control-label" for="inlineFormCheck">{{ $perm->name }}</label>
                         </div>
                     </div>

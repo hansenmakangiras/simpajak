@@ -34,7 +34,7 @@ class RoleController extends Controller
         $roles = Role::all();
         $permissions = Permission::all();
 
-        return view('pages.roles.index',compact('roles','permissions'))->with($data);
+        return view('roles.index',compact('roles','permissions'))->with($data);
     }
 
     /**
@@ -42,7 +42,7 @@ class RoleController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         //
     }
@@ -71,7 +71,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
         //
     }
@@ -82,7 +82,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(int $id): Response
     {
         //
     }
@@ -119,7 +119,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id): Response
+    public function destroy(int $id): Response
     {
         //
     }
