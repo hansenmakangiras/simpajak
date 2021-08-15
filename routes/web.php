@@ -54,15 +54,13 @@ Route::group(['middleware' => 'auth', 'web'], function () {
     });
 
     Route::prefix('users')->group(function () {
-        Route::get('/account/{id}', [UserController::class,'account'])->name('users.account');
-        Route::get('/profil/{id}', [UserController::class,'profil'])->name('users.profil');
-        Route::post('/profil/{id}', [UserController::class,'profil'])->name('users.profil');
+        Route::get('/account/{id}', [UserController::class, 'account'])->name('users.account');
+        Route::get('/profil/{id}', [UserController::class, 'profil'])->name('users.profil');
+        Route::post('/profil/{id}', [UserController::class, 'profil'])->name('users.profil');
     });
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
-
-
 
     // APPS
     Route::prefix('apps')->group(function () {
@@ -1366,7 +1364,6 @@ Route::group(['middleware' => 'auth', 'web'], function () {
             });
         });
     });
-
 
     // Widgets
     Route::get('/widgets', function () {
