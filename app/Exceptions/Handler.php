@@ -56,6 +56,7 @@ class Handler extends ExceptionHandler
         }
 
         flash()->warning($exception->getMessage());
+
         return redirect()->route('home');
     }
 }
