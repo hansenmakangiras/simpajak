@@ -27,7 +27,8 @@ class PermissionController extends Controller
         ];
 
         $permissions = Permission::all();
-        return view('permissions.index',compact('permissions'))->with($data);
+
+        return view('permissions.index', compact('permissions'))->with($data);
     }
 
     /**
@@ -43,7 +44,8 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
+     *
      * @return void
      */
     public function store(Request $request)
@@ -54,7 +56,8 @@ class PermissionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show(int $id): Response
@@ -65,7 +68,8 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit(int $id): Response
@@ -76,8 +80,9 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  int  $id
+     * @param Request $request
+     * @param int     $id
+     *
      * @return Response
      */
     public function update(Request $request, int $id): Response
@@ -88,7 +93,8 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy(int $id): Response

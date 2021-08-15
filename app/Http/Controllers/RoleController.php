@@ -34,7 +34,7 @@ class RoleController extends Controller
         $roles = Role::all();
         $permissions = Permission::all();
 
-        return view('roles.index',compact('roles','permissions'))->with($data);
+        return view('roles.index', compact('roles', 'permissions'))->with($data);
     }
 
     /**
@@ -50,15 +50,17 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
-     * @return RedirectResponse
+     * @param Request $request
+     *
      * @throws ValidationException
+     *
+     * @return RedirectResponse
      */
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, ['name' => 'required|unique:roles']);
 
-        if( Role::create($request->only('name')) ) {
+        if (Role::create($request->only('name'))) {
             flash('Role Added');
         }
 
@@ -68,7 +70,8 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show(int $id): Response
@@ -79,7 +82,8 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit(int $id): Response
@@ -90,24 +94,26 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  int  $id
+     * @param Request $request
+     * @param int     $id
+     *
      * @return RedirectResponse
      */
     public function update(Request $request, int $id): RedirectResponse
     {
-        if($role = Role::findOrFail($id)) {
+        if ($role = Role::findOrFail($id)) {
             // admin role has everything
-            if($role->name === 'Admin') {
+            if ($role->name === 'Admin') {
                 $role->syncPermissions(Permission::all());
+
                 return redirect()->route('roles.index');
             }
 
             $permissions = $request->get('permissions', []);
             $role->syncPermissions($permissions);
-            flash( $role->name . ' permissions has been updated.');
+            flash($role->name.' permissions has been updated.');
         } else {
-            flash()->error( 'Role with id '. $id .' note found.');
+            flash()->error('Role with id '.$id.' note found.');
         }
 
         return redirect()->route('roles.index');
@@ -116,7 +122,8 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy(int $id): Response

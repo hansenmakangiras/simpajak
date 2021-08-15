@@ -26,7 +26,7 @@ class UserController extends Controller
         ];
         $users = User::all();
 
-        return view('users.list_pengguna',compact('users'))->with($data);
+        return view('users.list_pengguna', compact('users'))->with($data);
     }
 
     public function create()
@@ -42,7 +42,7 @@ class UserController extends Controller
         $users = User::latest()->paginate();
         $roles = Role::pluck('name', 'id');
 
-        return view('users.create',compact('users','roles'))->with($data);
+        return view('users.create', compact('users', 'roles'))->with($data);
     }
 
     /**
@@ -51,10 +51,10 @@ class UserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'bail|required|min:2',
-            'email' => 'required|email|unique:users',
+            'name'     => 'bail|required|min:2',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'roles' => 'required|min:1'
+            'roles'    => 'required|min:1',
         ]);
 
 //        $request = $request->except(['roles', 'permissions']);
@@ -63,17 +63,17 @@ class UserController extends Controller
 
         // Create the user
         $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
+            'name'     => $request->get('name'),
+            'email'    => $request->get('email'),
             'password' => $request->get('password'),
-            'status' => $request->get('status') === '1' ? 1 : 0,
+            'status'   => $request->get('status') === '1' ? 1 : 0,
             'is_admin' => $request->get('roles') === '1' ? 1 : 0,
         ]);
 
-        if ( $user) {
+        if ($user) {
             $this->syncPermissions($request, $user);
             flash('User has been created.');
-        }else{
+        } else {
             flash()->error('Unable to create user.');
         }
 
@@ -102,15 +102,15 @@ class UserController extends Controller
         $roles = Role::pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
 
-        return view('users.edit',compact('user','roles','permissions'))->with($data);
+        return view('users.edit', compact('user', 'roles', 'permissions'))->with($data);
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'bail|required|min:2',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'roles' => 'required|min:1'
+            'name'  => 'bail|required|min:2',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'roles' => 'required|min:1',
         ]);
 
         // Get the user
@@ -120,7 +120,7 @@ class UserController extends Controller
         $user->fill($request->except(['roles', 'permissions', 'password']));
 
         // check for password change
-        if($request->get('password')) {
+        if ($request->get('password')) {
             $user->password = bcrypt($request->get('password'));
         }
 
@@ -183,17 +183,18 @@ class UserController extends Controller
 
         $users = User::find($id);
 
-        return view('users.user_account_setting',compact('users'))->with($data);
+        return view('users.user_account_setting', compact('users'))->with($data);
     }
 
     public function destroy($id)
     {
-        if ( Auth::user()->id === $id ) {
+        if (Auth::user()->id === $id) {
             flash()->warning('Deletion of currently logged in user is not allowed :(')->important();
+
             return redirect()->back();
         }
 
-        if( User::findOrFail($id)->delete() ) {
+        if (User::findOrFail($id)->delete()) {
             flash()->success('User has been deleted');
         } else {
             flash()->success('User not deleted');
@@ -220,7 +221,7 @@ class UserController extends Controller
         $roles = Role::find($roles);
 
         // check for current role changes
-        if( ! $user->hasAllRoles( $roles ) ) {
+        if (!$user->hasAllRoles($roles)) {
             // reset all direct permissions for user
             $user->permissions()->sync([]);
         } else {
